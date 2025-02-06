@@ -31,7 +31,7 @@ const parseRecursion = (parentObj: any, objPathMap: Map<any,string>, pathObjectM
             const childObject: any = parentObj[i];
             if (typeof childObject === "string") {
                 const path = parseReferencePath(childObject);
-                if (path) {
+                if (path !== null) {
                     const referenceObject = pathObjectMap.get(path);
                     if (referenceObject) {
                         parentObj[i] = referenceObject;
@@ -51,7 +51,7 @@ const parseRecursion = (parentObj: any, objPathMap: Map<any,string>, pathObjectM
         const childObject: any = parentObj[key];
         if (typeof childObject === "string") {
             const path = parseReferencePath(childObject);
-            if (path) {
+            if (path !== null) {
                 const referenceObject = pathObjectMap.get(path);
                 if (referenceObject) {
                     parentObj[key] = referenceObject;
