@@ -1,0 +1,28 @@
+{
+  "name": "circular-reference",
+  "version": "1.0.0",
+  "description": "Tiny util to stringify and parse circular references in objects.",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "./dist/**/*"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "test": "test"
+  },
+  "keywords": [
+    "circular",
+    "reference"
+  ],
+  "author": "derRaab",
+  "license": "MIT",
+  "repository": {
+    "url": "https://github.com/derRaab/circular-reference-js"
+  },
+  "devDependencies": {
+    "tsup": "^8.3.6",
+    "typescript": "^5.7.3"
+  }
+}
