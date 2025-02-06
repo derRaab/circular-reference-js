@@ -1,5 +1,5 @@
-import { stringifyReferencePath } from "./reference";
 import { createPathSegmentFromArrayIndex, createPathSegmentFromObjectKey } from "./path";
+import { stringifyReferencePath } from "./reference";
 
 const stringifyRecursion = (parentObj: any, objReferenceMap: Map<Object,string>, path: string[]) => {
     if (typeof parentObj !== "object") {

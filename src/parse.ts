@@ -1,5 +1,5 @@
-import { parseReferencePath } from "./reference";
 import { createPathSegmentFromArrayIndex, createPathSegmentFromObjectKey } from "./path";
+import { parseReferencePath } from "./reference";
 
 
 const collectObjectPaths = (parentObj: any, objPathMap: Map<Object,string>, path: string[]) => {
