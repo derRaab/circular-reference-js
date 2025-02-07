@@ -1,5 +1,5 @@
-const PATH_PREFIX = "<<CircularReference path='";
-const PATH_SUFFIX = "'>>";
+const PATH_PREFIX = "<CircularReference path='";
+const PATH_SUFFIX = "'>";
 
 export const stringifyReferencePath = (path: string) => {
     return PATH_PREFIX + path + PATH_SUFFIX;
@@ -12,7 +12,7 @@ export const parseReferencePath = (reference: string) => {
     }
     pathStartIndexOf += PATH_PREFIX.length;
 
-    const pathEndIndexOf = reference.indexOf(PATH_SUFFIX, pathStartIndexOf);
+    const pathEndIndexOf = reference.lastIndexOf(PATH_SUFFIX);
     if (pathEndIndexOf === -1) {
         return null;
     }
