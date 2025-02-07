@@ -159,10 +159,9 @@ try {
 
     // This object should also have the exact same structure and values as the original object
     testObjectStructureAndValues(parsedObjectClone);
+    console.log("✅ All tests passed");
 } catch (error) {
-    console.error("❌ Test error:", error);
+    console.error("❌ Tests failed:", error);
     process.exit(1);
 }
-
-console.log("✅ All tests passed");
 process.exit(0);
