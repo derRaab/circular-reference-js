@@ -1,4 +1,4 @@
-import { createPathSegmentFromArrayIndex, createPathSegmentFromObjectKey } from "./path";
+import { createPathSegmentFromArrayIndex, createPathSegmentFromObjectKey, joinPath } from "./path";
 import { stringifyReferencePath } from "./reference";
 
 const stringifyRecursion = (parentObj: any, objReferenceMap: Map<Object,string>, path: string[]) => {
@@ -6,7 +6,7 @@ const stringifyRecursion = (parentObj: any, objReferenceMap: Map<Object,string>,
         return;
     }
 
-    let reference = stringifyReferencePath(path.join(""));
+    let reference = stringifyReferencePath(joinPath(path));
     objReferenceMap.set(parentObj, reference);
 
     if (Array.isArray(parentObj)) {
