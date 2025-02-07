@@ -22,7 +22,7 @@
   "author": "derRaab",
   "license": "MIT",
   "repository": {
-    "url": "https://github.com/derRaab/circular-reference-js2"
+    "url": "https://github.com/derRaab/circular-reference-js"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.12",
