@@ -1,18 +1,19 @@
-# circular-reference-js
+# circular-reference
 
 Enables JSON.stringify() and JSON.parse() for JavaScript objects with circular references.
 
-Avoids `Converting circular structure to JSON" error`!
+**Note:** In Node.js, circular references are displayed using `<ref *X>` notation, whereas browsers will still throw a "Converting circular structure to JSON" error if you try to directly `JSON.stringify()` an unresolved circular object.
 
-There are just these two methods that will inject or resolve a special string representation of such circular references (e.g. `<CircularReference path=''>` refers to the root object) :
+This library provides two methods that handle circular references by injecting or resolving a special string representation (e.g., `<CircularReference path=''>` refers to the root object):
 
-- `stringifyCircularReferences(data)` will replace all circular references with a string representation of the root path to the referenced object within the nested structure.
+- `stringifyCircularReferences(data:any, clone=false)` replaces all circular references with a string representation of their paths within the structure. If `clone` is `true`, the function operates on a deep copy of data, leaving the original unchanged.
 
-- `parseCircularReferences(data)` will search for such string representations within a nested structure and resolve the paths in place.
+- `parseCircularReferences(data:any, clone=false)` restores circular references based on the encoded paths. If `clone` is `true`, it modifies a deep copy instead of data directly.
+
 
 ## Install
 
-`npm install circular-reference`
+`npm install circular-reference` or use your preferred package manager.
 
 ## How to use
 
@@ -22,18 +23,19 @@ There are just these two methods that will inject or resolve a special string re
 import { parseCircularReferences, stringifyCircularReferences } from "circular-reference";
 
 // Object that references itself
-const objectA: any = {};
+const objectA = {};
       objectA.ref = objectA;
 
-// Save the object as a json string
-stringifyCircularReferences(objectA);
+// Convert the object to a JSON string
+objectA = stringifyCircularReferences(objectA);
 const objectAString = JSON.stringify(objectA);
-console.log(objectAString); // {"ref":"<CircularReference path=''>"}
+console.log(objectAString);
+/* Output: {"ref":"<CircularReference path=''>"} */
 
 // Restore the same structure from the json string
 const objectB = JSON.parse(objectAString);
-parseCircularReferences(objectB);
-console.log(objectB.ref === objectB); // true;
+objectB = parseCircularReferences(objectB);
+console.log(objectB.ref === objectB); // true
 ```
 
 ### Complex example
@@ -42,10 +44,10 @@ console.log(objectB.ref === objectB); // true;
 import { parseCircularReferences, stringifyCircularReferences } from "circular-reference";
 
 // Two arrays and two objects
-const array1: any = [];
-const array2: any = [];
-const object1: any = {};
-const object2: any = {};
+const array1 = [];
+const array2 = [];
+const object1 = {};
+const object2 = {};
 // Each object references all objects and arrays (including itself)
 object1["array1"] = array1;
 object1["array2"] = array2;
@@ -152,7 +154,5 @@ console.log(data);
     object2: [Circular *4]
   }
 }
-*/
-
 ```
 
