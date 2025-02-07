@@ -12,7 +12,8 @@
     "build": "tsup",
     "example": "ts-node src/examples.ts",
     "lint": "tsc",
-    "test": "ts-node src/index.test.ts"
+    "test": "ts-node src/index.test.ts",
+    "release": "npx changeset publish"
   },
   "keywords": [
     "circular",
