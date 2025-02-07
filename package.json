@@ -1,6 +1,6 @@
 {
   "name": "circular-reference",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Tiny util to stringify and parse circular references in objects.",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
