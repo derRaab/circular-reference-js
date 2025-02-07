@@ -1,8 +1,6 @@
 # circular-reference
 
-Enables JSON.stringify() and JSON.parse() for JavaScript objects with circular references.
-
-**Note:** In Node.js, circular references are displayed using `<ref *X>` notation, whereas browsers will still throw a "Converting circular structure to JSON" error if you try to directly `JSON.stringify()` an unresolved circular object.
+Enables `JSON.stringify()` and `JSON.parse()` for JavaScript objects with circular references.
 
 This library provides two methods that handle circular references by injecting or resolving a special string representation (e.g., `<CircularReference path=''>` refers to the root object):
 
@@ -37,6 +35,7 @@ const objectB = JSON.parse(objectAString);
 objectB = parseCircularReferences(objectB);
 console.log(objectB.ref === objectB); // true
 ```
+**Note:** In Node.js, circular references are displayed using `<ref *X>` notation, whereas browsers will still throw a "Converting circular structure to JSON" error if you try to directly `JSON.stringify()` an unresolved circular object.
 
 ### Complex example
 
