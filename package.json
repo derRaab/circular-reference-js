@@ -11,6 +11,7 @@
   "scripts": {
     "build": "tsup",
     "example": "ts-node src/examples.ts",
+    "lint": "tsc",
     "test": "ts-node src/index.test.ts"
   },
   "keywords": [

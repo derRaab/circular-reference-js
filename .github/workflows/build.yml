@@ -1,4 +1,4 @@
-name: Build
+name: CI
 on:
     workflow_dispatch:
     push:
@@ -12,5 +12,6 @@ jobs:
             - uses: actions/checkout@v4
             - uses: actions/setup-node@v4
             - run: npm install --frozen-lockfile
+            - run: npm run lint
             - run: npm run test
             - run: npm run build
