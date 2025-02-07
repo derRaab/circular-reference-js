@@ -31,6 +31,10 @@ const stringifyRecursion = (parentObj: any, objReferenceMap: Map<Object,string>,
     }
 }
 
-export const stringifyCircularReferences = (data: Object) => {
+export const stringifyCircularReferences = (data: Object, clone = false) => {
+    if (clone) {
+        data = structuredClone(data);
+    }
     stringifyRecursion(data, new Map<Object, string>(), []);
+    return data;
 }

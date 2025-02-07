@@ -81,7 +81,10 @@ const parseRecursion = (parentObj: any, objReferenceMap: Map<Object,string>, pat
     }
 }
 
-export const parseCircularReferences = (data: Object) => {
+export const parseCircularReferences = (data: Object, clone = false) => {
+    if (clone) {
+        data = structuredClone(data);
+    }
     // Sometimes referenced objects are not yet parsed. We need to parse the data multiple times until all references are resolved.
     let unresolvedReferencesLength = -1;
     let unresolvedReferences: string[] = [];
