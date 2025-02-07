@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "build": "tsup",
-    "test": "test"
+    "test": "ts-node src/index.test.ts"
   },
   "keywords": [
     "circular",
@@ -22,6 +22,7 @@
     "url": "https://github.com/derRaab/circular-reference-js"
   },
   "devDependencies": {
+    "ts-node": "^10.9.2",
     "tsup": "^8.3.6",
     "typescript": "^5.7.3"
   }
