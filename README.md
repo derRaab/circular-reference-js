@@ -11,7 +11,7 @@ This library provides two methods that handle circular references by injecting o
 
 ## Install
 
-`npm install circular-reference` or use your preferred package manager.
+`npm i circular-reference` or use your preferred package manager.
 
 ## How to use
 
