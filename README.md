@@ -154,4 +154,6 @@ console.log(data);
   }
 }
 ```
+## NPM Package Link
 
+https://www.npmjs.com/package/circular-reference
