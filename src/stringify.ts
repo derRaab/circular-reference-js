@@ -1,12 +1,15 @@
 import { createPathSegmentFromArrayIndex, createPathSegmentFromObjectKey, joinPath } from "./path";
 import { stringifyReferencePath } from "./reference";
 
-const stringifyRecursion = (parentObj: any, objReferenceMap: Map<Object,string>, path: string[]) => {
+
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const stringifyRecursion = (parentObj: any, objReferenceMap: Map<object,string>, path: string[]) => {
     if (typeof parentObj !== "object") {
         return;
     }
 
-    let reference = stringifyReferencePath(joinPath(path));
+    const reference = stringifyReferencePath(joinPath(path));
     objReferenceMap.set(parentObj, reference);
 
     if (Array.isArray(parentObj)) {
@@ -31,10 +34,10 @@ const stringifyRecursion = (parentObj: any, objReferenceMap: Map<Object,string>,
     }
 }
 
-export const stringifyCircularReferences = (data: Object, clone = false) => {
+export const stringifyCircularReferences = (data: object, clone = false) => {
     if (clone) {
         data = structuredClone(data);
     }
-    stringifyRecursion(data, new Map<Object, string>(), []);
+    stringifyRecursion(data, new Map<object, string>(), []);
     return data;
 }

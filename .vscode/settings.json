@@ -1,0 +1,10 @@
+{
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint":"always",
+      "source.organizeImports": "explicit",
+    },
+    "eslint.codeActionsOnSave.rules": null,
+    "eslint.format.enable": true,
+    "typescript.format.enable": false
+}

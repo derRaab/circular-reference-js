@@ -25,7 +25,7 @@ export const splitPath = (path: string) => {
         return [];
     }
     const pathSegmentStrings = path.split( "][");
-    return pathSegmentStrings.map((segmentString, index) => {
+    return pathSegmentStrings.map((segmentString) => {
         segmentString = trimString(segmentString, "[");
         segmentString = trimString(segmentString, "]");
         

@@ -2,7 +2,7 @@ import { parseCircularReferences } from "./parse";
 import { stringifyCircularReferences } from "./stringify";
 
 // Object that references itself
-const objectA: any = {};
+const objectA: Record<string, unknown> = {};
       objectA.ref = objectA;
 
 // Save the object as a json string
@@ -20,13 +20,11 @@ console.log(objectB);
 
 
 
-
-
 // Two arrays and two objects
-const array1: any = [];
-const array2: any = [];
-const object1: any = {};
-const object2: any = {};
+const array1: unknown[] = [];
+const array2: unknown[] = [];
+const object1: Record<string, unknown> = {};
+const object2: Record<string, unknown> = {};
 // Each object references all objects and arrays (including itself)
 object1["array1"] = array1;
 object1["array2"] = array2;

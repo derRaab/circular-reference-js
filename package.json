@@ -1,6 +1,6 @@
 {
   "name": "circular-reference",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Tiny util to stringify and parse circular references in objects.",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -30,8 +30,12 @@
     "url": "https://github.com/derRaab/circular-reference-js"
   },
   "devDependencies": {
+    "@eslint/js": "^9.20.0",
+    "eslint": "^9.20.0",
+    "globals": "^15.14.0",
     "ts-node": "^10.9.2",
     "tsup": "^8.3.6",
+    "typescript-eslint": "^8.23.0",
     "typescript": "^5.7.3"
   }
 }

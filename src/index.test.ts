@@ -1,8 +1,10 @@
 import { parseCircularReferences } from "./parse";
 import { stringifyCircularReferences } from "./stringify";
 
+
+
 // Basic nested structure
-const object: any = {
+const object = {
     "array1": [1],
     "boolean1": true,
     "number1": 1.1,
@@ -12,7 +14,7 @@ const object: any = {
         "object2": {
             "array3": [3],
             "string3": "stringValue3",
-        }
+        },
     },
     "string1": "string1",
 };
@@ -39,9 +41,10 @@ const keyObject1ToObject2 = "object1 ]\"[ To Object2";
 const keyObject2ToArray3 = "object2 ]\"[ To Array3";
 const keyObject2ToObject = "object2 ]\"[ To object";
 
-array1.push(array3);
-array2.push(object2);
-array3.push(object);
+array1.push(array3 as unknown as number);
+array2.push(object2 as unknown as number);
+array3.push(object as unknown as number);
+
 object1[keyObject1ToArray2] = array2;
 object1[keyObject1ToObject2] = object2;
 object2[keyObject2ToArray3] = array3;
@@ -123,6 +126,7 @@ const testObjectStructureAndValues = (testObject: any) => {
     assertTrue(testObject2[keyObject2ToObject] === testObject);
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const testStringifiedObject = (object: any) => {
     const stringMap = new Map<string,string>();
     collectStrings(object, stringMap);

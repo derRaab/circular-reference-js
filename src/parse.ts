@@ -2,7 +2,7 @@ import { createPathSegmentFromArrayIndex, createPathSegmentFromObjectKey, joinPa
 import { parseReferencePath, stringifyReferencePath } from "./reference";
 
 
-const collectObjectPaths = (parentObj: any, objPathMap: Map<Object,string>, path: string[]) => {
+const collectObjectPaths = (parentObj: Record<string,unknown> | unknown, objPathMap: Map<unknown,string>, path: string[]) => {
     if (typeof parentObj !== "object") {
         return;
     }
@@ -21,12 +21,13 @@ const collectObjectPaths = (parentObj: any, objPathMap: Map<Object,string>, path
     }
 }
 
-const parseRecursion = (parentObj: any, objReferenceMap: Map<Object,string>, pathObjectMap: Map<string, any>, path: string[], unresolvedReferences: string[]) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const parseRecursion = (parentObj: any, objReferenceMap: Map<object,string>, pathObjectMap: Map<string, any>, path: string[], unresolvedReferences: string[]) => {
     if (typeof parentObj !== "object") {
         return;
     }
 
-    let reference = stringifyReferencePath(joinPath(path));
+    const reference = stringifyReferencePath(joinPath(path));
     objReferenceMap.set(parentObj, reference);
 
     if (Array.isArray(parentObj)) {
@@ -81,7 +82,7 @@ const parseRecursion = (parentObj: any, objReferenceMap: Map<Object,string>, pat
     }
 }
 
-export const parseCircularReferences = (data: Object, clone = false) => {
+export const parseCircularReferences = (data: object, clone = false) => {
     if (clone) {
         data = structuredClone(data);
     }
@@ -93,13 +94,13 @@ export const parseCircularReferences = (data: Object, clone = false) => {
         unresolvedReferences = [];
 
         // Collect all existing object paths
-        const objPathMap = new Map<Object, string>();
+        const objPathMap = new Map<object, string>();
         collectObjectPaths(data, objPathMap, []);
-        const pathObjectMap = new Map<string, Object>();
+        const pathObjectMap = new Map<string, object>();
         for (const [object, path] of objPathMap) {
             pathObjectMap.set(path, object);
         }
 
-        parseRecursion(data, new Map<Object, string>(), pathObjectMap, [], unresolvedReferences);
+        parseRecursion(data, new Map<object, string>(), pathObjectMap, [], unresolvedReferences);
     }
 }
